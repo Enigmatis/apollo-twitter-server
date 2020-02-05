@@ -1,9 +1,10 @@
-import {ApolloServer} from 'apollo-server-koa';
-import Koa from 'koa';
 import {typeDefs} from './schema/types';
 import {resolvers} from './schema/resolvers';
+import {ApolloServer} from 'apollo-server';
+import express from 'express';
 
-const port: number = 4000;
+const PORT = 4000;
+const app = express();
 
 const server = new ApolloServer({
     typeDefs,
@@ -11,9 +12,8 @@ const server = new ApolloServer({
     // TODO: initiate the context
 });
 
-const app = new Koa();
-server.applyMiddleware({app});
+app.use(server.getMiddleware());
 
-app.listen({port}, () =>
-    console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`),
+app.listen(PORT, () =>
+    console.log(`Server ready at http://localhost:${PORT}${server.graphqlPath}`),
 );

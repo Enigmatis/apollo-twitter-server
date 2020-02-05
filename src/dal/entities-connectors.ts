@@ -1,5 +1,5 @@
-import {users, tags, tweets} from "./data";
-import {UserInputError} from "apollo-server-koa";
+import {tags, tweets, users} from "./data";
+import {UserInputError} from "apollo-server";
 
 export function getAllUsers(): User[] {
     return users;

@@ -3,8 +3,8 @@ import {createTag, getTagByName} from "../dal/entities-connectors";
 export const resolvers = {
     //TODO: create resolvers
     Query: {
-        helloWorld(obj: any, args: any, context: any, info: any) {
-            return 'hello world!';
+        foo(obj: any, args: any, context: any, info: any) {
+            return 'bar';
         },
     },
 };
