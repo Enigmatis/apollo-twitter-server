@@ -13,4 +13,5 @@ interface Tweet {
     id: string,
     body: string,
     date: Date,
+    user: User,
 }

@@ -11,6 +11,14 @@ export function getUserByUsername(username: String): User | undefined {
     return lodash.find(users, user => user.username === username);
 }
 
+export function getTweetsByUsername(username: String): Tweet[] {
+    const user = getUserByUsername(username);
+    if (!user) {
+        throw new UserInputError('Cannot find user with the provided username');
+    }
+    return user.tweets;
+}
+
 export function createUser(username: string,
                            password: string,
                            firstName: string,
@@ -53,6 +61,7 @@ export function createTweet(body: string,
         id: uuidv4(),
         date: new Date(),
         body,
+        user,
     };
     user.tweets.push(newTweet);
     tweets.push(newTweet);
