@@ -1,11 +1,3 @@
-interface Tweet {
-    id: String,
-    body: String,
-    date: Date,
-    user: User,
-    tags: Tag[],
-}
-
 interface User {
     id: String,
     username: String,
@@ -17,7 +9,8 @@ interface User {
     tweets: Tweet[],
 }
 
-interface Tag {
+interface Tweet {
     id: String,
-    name: String,
+    body: String,
+    date: Date,
 }
