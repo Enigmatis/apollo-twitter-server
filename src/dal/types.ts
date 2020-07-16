@@ -1,16 +1,16 @@
 interface User {
-    id: String,
-    username: String,
-    password: String,
-    firstName: String,
-    lastName: String,
-    name?: String,
-    avatarUrl?: String,
+    id: string,
+    username: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    name?: string,
+    avatarUrl?: string,
     tweets: Tweet[],
 }
 
 interface Tweet {
-    id: String,
-    body: String,
+    id: string,
+    body: string,
     date: Date,
 }

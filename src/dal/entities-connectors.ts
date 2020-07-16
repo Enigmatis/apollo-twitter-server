@@ -15,7 +15,7 @@ export function createUser(username: string,
                            password: string,
                            firstName: string,
                            lastName: string): User {
-    if (!getUserByUsername(username)) {
+    if (getUserByUsername(username)) {
         throw new UserInputError('The username is already taken!');
     }
     const newUser: User = {
@@ -35,6 +35,7 @@ export function deleteUser(username: String): User | undefined {
     if (!user) {
         throw new UserInputError('Cannot find user with the provided username');
     }
+    lodash.forEach(user.tweets, tweet => deleteTweet(tweet.id));
     return lodash.remove(users, user => user.username === username)[0];
 }
 
@@ -56,4 +57,8 @@ export function createTweet(body: string,
     user.tweets.push(newTweet);
     tweets.push(newTweet);
     return newTweet;
+}
+
+export function deleteTweet(id: string): Tweet | undefined {
+    return lodash.remove(tweets, tweet => tweet.id === id)[0];
 }
