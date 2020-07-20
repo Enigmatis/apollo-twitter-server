@@ -9,7 +9,10 @@ const app = express();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // TODO: initiate the context
+    context: (context: { req: express.Request, res: express.Response }) => ({
+        headers: context.req.headers,
+        body: context.req.body,
+    }),
 });
 
 app.use(server.getMiddleware());
